@@ -9,13 +9,11 @@ var palyer, playerBase, playerArcher;
 var computer, computerBase, computerArcher;
 var playerArrows = [];
 var computerArrows = [];
-//
-//Declare the varibales to add 3 life for player and computerplayer
+var playerArcherLife = 3;
+var computerArcherLife = 3;
 
 function preload() {
-  //Load Image of background
-  backgroundImg = loadImage("assets/background.gif")
-
+  backgroundImg = loadImage("./assets/background.gif");
 }
 
 function setup() {
@@ -72,19 +70,17 @@ function draw() {
 
   playerBase.display();
   player.display();
-  
+  player.life();
   playerArcher.display();
   handlePlayerArrowCollision();
 
   for (var i = 0; i < computerArrows.length; i++) {
     showArrows(i, computerArrows);
   }
-  //call Player.life and computerplayer.life
-
 
   computerBase.display();
   computer.display();
-  
+  computer.life();
   computerArcher.display();
   handleComputerArrowCollision();
 }
@@ -114,7 +110,7 @@ function keyReleased() {
 
 function showArrows(index, arrows) {
   arrows[index].display();
- 
+
 }
 
 function handleComputerArcher() {
@@ -170,7 +166,7 @@ function handlePlayerArrowCollision() {
       archerCollision.collided ||
       computerCollision.collided
     ) {
-      console.log("Player Arrow Collided")
+     console.log("PlayerArrow Collided")
     }
   }
 }
@@ -196,9 +192,9 @@ function handleComputerArrowCollision() {
       baseCollision.collided ||
       archerCollision.collided ||
       playerCollision.collided
-    )
-    {
-      console.log("Computer Arrow Collided")
+    ) {
+      console.log("ComputerArrow Collided")
     }
   }
 }
+
